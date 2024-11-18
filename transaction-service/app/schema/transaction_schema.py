@@ -2,7 +2,7 @@ from datetime import datetime
 from decimal import Decimal
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class Transaction(BaseModel):
@@ -18,7 +18,7 @@ class Transaction(BaseModel):
 
 class Transfer(BaseModel):
     to_user_id: int
-    amount: Decimal
+    amount: Decimal = Field(gt=0)
 
 
 class Filter(BaseModel):
